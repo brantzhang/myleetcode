@@ -3,7 +3,23 @@ Find the contiguous subarray within an array (containing at least one number) wh
 For example, given the array [?2,1,?3,4,?1,2,1,?5,4],
 the contiguous subarray [4,?1,2,1] has the largest sum = 6.
 */
-//O(n)f复杂度
+
+//动态规划，复杂度O(n)
+class Solution {
+public: 
+    int maxSubArray(int A[], int n) {
+        if (n==1) return A[0];
+        int currMax=A[0];
+        int GlobalMax=A[0];
+        for(int i=1;i<n;i++){
+            currMax = max(currMax+A[i],A[i]);
+            GlobalMax = max(currMax,GlobalMax);
+        }
+        return GlobalMax;
+    }
+};
+
+//复杂度O(n) 
 class Solution {
 public: 
     int maxSubArray(int A[], int n) {
